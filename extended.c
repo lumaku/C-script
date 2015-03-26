@@ -3,9 +3,10 @@
 # https://github.com/lumaku/C-script
 LIBINCL="glib-2.0 gsl" # included libraries
 CFLAGS=`pkg-config --cflags $LIBINCL`; LDLIBS=`pkg-config --libs $LIBINCL`
-CFLAGS=`echo $CFLAGS -g -Wall -std=gnu11 -O3` # dgb symbols: -g, Warnings on/off: -Wall/-w
-sed -n -e '10,$p' < "$0" | /usr/bin/gcc -x c $CFLAGS $LDFLAGS -o "$0.$$.out" -
-if [ -f $0.$$.out ]; then $0.$$.out "$@"; STATUS=$?; rm $0.$$.out; else echo "Error: File $0.$$.out was not generated."; STATUS=1; fi;
+CFLAGS=`echo $CFLAGS -g -Wall -std=gnu11 -O3` # gdb  symbols: -g, Warnings on/off: -Wall/-w
+sed -n -e '11,$p' < "$0" | /usr/bin/gcc -x c $CFLAGS $LDFLAGS -o "$0.$$.out" -
+if [ -z ${DBG+x} ]; then DBGPARM=""; else DBGPARM="/usr/bin/env gdb -q "; fi;
+if [ -f $0.$$.out ]; then $DBGPARM$0.$$.out "$@"; STATUS=$?; rm $0.$$.out; else echo "Error: File $0.$$.out was not generated."; STATUS=1; fi;
 exit $STATUS 
 #include <stdio.h>
 #include <math.h>
