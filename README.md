@@ -4,13 +4,13 @@
 ### Usage
 The script can be started with
 - `./oneliner.c` 
-- `./extended.c`
+- `./extended.c arg1 arg2`
 
 No installation or modification of shell variables necessary.
 
 ### How it works
 - *oneliner.c* The first line invokes `make` which handles the file based on its file name extension (that must be *.c).
-- *extended.c* A multiline shebang generates the library linking parameters and redirects the C source code the the compiler. Additional libraries are automatically parsed to linker arguments. Doesn't need the *.c file name extension.
+- *extended.c* A multiline shebang generates the library linking parameters and redirects the C source code the the compiler. Additional libraries are automatically parsed to linker arguments. Supports command line parameters. Doesn't need the *.c file name extension.
 
 ### Ideas from and Credits to
 - [C-script](https://github.com/junjihashimoto/c-script): "script programing environment for c++" (install requred). Similar to [jit](https://github.com/radiospiel/jit), [c99sh](https://github.com/RhysU/c99sh)
