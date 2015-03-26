@@ -1,5 +1,8 @@
 # C-script
-- Execute a C source code file as a shell script. 
+- Execute a C source code file as a shell script
+- The code gets automatically compiled and executed
+- Debug using `gdb`
+- Handles command line arguments, additional linked libraries
 
 ### Usage
 The script can be started with
